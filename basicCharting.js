@@ -15,8 +15,6 @@ function colorPicker(v){
 	}
 }
 
-
-
 //using MultiValueMap
 svg.selectAll("rect")
 	.data(dataset)
