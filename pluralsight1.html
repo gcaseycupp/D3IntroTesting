@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width">
     <title>D3 Practice</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js" charset="utf-8"></script>
+<!--       <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+ --><!--        <script src="centralAmericaCapitals.geo.json" type="text/javascript"></script> -->
 </head>
 
 <body>
-    <h3>SVG Bar<h3>
+  
 <!-- <svg>
 <rect width="50" height="200" style="fill:blue;"/>
 </svg> -->
@@ -18,19 +20,19 @@
 </svg>
  -->
 
- <h3>D3 Bar<h3>
+ <!-- <h3>D3 Bar<h3>
 
  <p> Show Labels
  <select id='label-option'>
  <option value="all">All</option>
   <option value="minmax">Min/Max</option>
    <option value="none">Non</option>
- </select>
+ </select> -->
 <script>
 
- d3.select("body")
-.append("h1")
-.text("hellow worlds!")
+//  d3.select("body")
+// .append("h1")
+// .text("hellow worlds!")
 // d3.select("body")
 // .append("svg")
 // .append("rect")
@@ -38,6 +40,33 @@
 // 	.attr("height",200)
 // 	.style("fill","blue");
 
+var w = 500;
+var h = 500;
+
+// var projection + d3.geo.albersUsa()
+// 	.translate([w/2, h/2])
+// 	.scale([500]);
+
+var path = d3.geo.path();//.projection(projection);
+ //alert("a");
+// var geoJsonLayer = L.geoJson("centralAmericaCapitals.geo", {                
+//              });
+var svg = d3.select("body")
+	.append("svg")
+	.attr({
+		width:w,
+		height:h
+	});
+ //alert("b");
+d3.json("https://raw.githubusercontent.com/johan/world.geo.json/master/countries/ALB.geo.json", function(countries){
+	//d3.json("http://gcaseycupp.github.io/LeafletTesting2/data/countries.geo.json", function(countries){
+	svg.selectAll("path")
+		.data(countries.features)
+		.enter()
+		.append("path")
+		.attr("d",path)
+		.attr("fill","#666666");
+});
 
 </script>
 </body>
@@ -46,5 +75,6 @@
  -->
 <!--  <script src="externalDataSourcePart1.js" type="text/javascript"></script> -->
 <!--  <script src="datavizPart2.js" type="text/javascript"></script> -->
- <script src="ToolTipsEnhanceDataViz2.js" type="text/javascript"></script>
+ <!-- <script src="ToolTipsEnhanceDataViz2.js" type="text/javascript"></script> -->
+  <!-- <script src="d3MapsPart2.js" type="text/javascript"></script> -->
 </html>
